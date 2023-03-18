@@ -2,15 +2,12 @@ Tararache Crina-Andreea, grupa 324CB
 Paradigme de programare
 
 2.1
-In primul rand, calculam indexul coloanei dupa care trebuie sa sortam in tabelul dat. Pentru aceasta apelam functia 
-elemIndex care intoarce Just, asa ca apelam fromJust(elemIndex ...) pentru a obtine o valoare Int. Dupa aceea, apelam
-functia h care primeste ca parametru acest index si rezultatul functiei g care intoarce un tabel. In functia g se apeleaza
-functia get_table care primeste ca parametru o lista de valori sortate dupa coloana corespunzatoare si gaseste linia din
-tabel aferenta valorii din lista ed [Integer]. Practic, extragem din tabel coloana data, o sortam si dupa cautam linia iar 
-in tabel pentru a obtine si numele. Acum tot ce ne ramane de facut este sa sortam liniile care au aceleasi valori dupa nume.
-Acest lucru il facem apeland functia sort_by_name care intoarce un tabel ce contine toate liniile ce au aceleasi valori, ii
-facem sort si apelam recursiv aceeasi functie h scotand din tabel ce am sortat deja. La final, adaugam header-ul tabelului
-initial la rezultatul obtinut. 
+Calculam indexul coloanei dupa care trebuie sa sortam. Pentru aceasta apelam functia elemIndex care intoarce Just, asa ca apelam fromJust(elemIndex ...) pentru a 
+obtine o valoare Int. Dupa aceea, apelam functia h care primeste ca parametru acest index si rezultatul functiei g care intoarce un tabel. In functia g se apeleaza 
+functia get_table care primeste ca parametru o lista de valori sortate dupa coloana corespunzatoare si gaseste linia din tabel aferenta valorii din lista ed [Integer].
+Practic, extragem din tabel coloana data, o sortam si dupa cautam linia iar in tabel pentru a obtine si numele. Acum tot ce ne ramane de facut este sa sortam liniile 
+care au aceleasi valori dupa nume. Acest lucru il facem apeland functia sort_by_name care intoarce un tabel ce contine toate liniile ce au aceleasi valori, ii facem 
+sort si apelam recursiv aceeasi functie h scotand din tabel ce am sortat deja. La final, adaugam header-ul tabelului initial la rezultatul obtinut. 
 
 2.2
 Daca cele doua tabele date au acelasi header, adaugam la finalul primului tabel tail-ul celui de-al doilea tabel (pentru
