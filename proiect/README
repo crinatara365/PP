@@ -6,43 +6,38 @@ Calculam indexul coloanei dupa care trebuie sa sortam. Pentru aceasta apelam fun
 obtine o valoare Int. Dupa aceea, apelam functia h care primeste ca parametru acest index si rezultatul functiei g care intoarce un tabel. In functia g se apeleaza 
 functia get_table care primeste ca parametru o lista de valori sortate dupa coloana corespunzatoare si gaseste linia din tabel aferenta valorii din lista ed [Integer].
 Practic, extragem din tabel coloana data, o sortam si dupa cautam linia iar in tabel pentru a obtine si numele. Acum tot ce ne ramane de facut este sa sortam liniile 
-care au aceleasi valori dupa nume. Acest lucru il facem apeland functia sort_by_name care intoarce un tabel ce contine toate liniile ce au aceleasi valori, ii facem 
+care au aceleasi valori dupa nume. Acest lucru il facem apeland functia sort_by_name care intoarce un tabel ce contine toate liniile ce au aceleasi valori, facem 
 sort si apelam recursiv aceeasi functie h scotand din tabel ce am sortat deja. La final, adaugam header-ul tabelului initial la rezultatul obtinut. 
 
 2.2
-Daca cele doua tabele date au acelasi header, adaugam la finalul primului tabel tail-ul celui de-al doilea tabel (pentru
-a scapa de header), daca nu, afisam pur si simplu primul tabel.
+Daca cele doua tabele date au acelasi header, adaugam la finalul primului tabel tail-ul celui de-al doilea tabel (pentru a scapa de header), daca nu, afisam pur si 
+simplu primul tabel.
 
 2.3
-La acest exericitiu, apelam functia pad cu parametri cele 2 tabele si lungimea pe care trebui sa o aiba tabelul final (adica
-suma lungimilor celor doua tabele). Parcurgem rand cu rand cele doua tabele si facem append intre linii pana cand unul
-dintre tabele se termina. Apoi apelam functia null_list si ii dam ca parametru numarul de linii care mai trebuie parcurse
-din tabelul ramas pana ajungem la lungimea care trebuie, pe fiecare linie punand caracterul "".
+Apelam functia pad cu parametri cele 2 tabele si lungimea pe care trebui sa o aiba tabelul final (suma lungimilor celor doua tabele). Parcurgem rand cu rand cele doua 
+tabele si facem append intre linii pana cand unul dintre tabele se termina. Apoi apelam functia null_list si ii dam ca parametru numarul de linii care mai trebuie 
+parcurse din tabelul ramas pana ajungem la lungimea care trebuie, pe fiecare linie punand caracterul "".
 
 2.4
-In primul rand, apelam functia find_key care returneaza cele doua pozitii pe care se gaseste cheia data in header-urile 
-celor doua tabele. In functie de asta, stim la ce pozitie din row-uri sa ne uitam. Mai departe, se apeleaza functia 
-add_by_key care primeste ca parametri aceasta pereche de indexi si cele 2 tabele. Presupunem, pentru simplitatea explicatiei,
-ca indexul pe care se afla cheia in cele 2 tabele este 0 si ca se cheama "Nume". Asadar, pentru fiecare nume din T1, care
-se afla si in T2, facem append intre row-ul din primul tabel si tail-ul row-ului din al doilea table. Se apeleaza recursiv
-pana s-a parcurs tot tabelul T1. Mai folosim functia exists, care verifica daca numele dat se afla pe oricare row din T2
-la indexul dat de cheie, si functia get_index care intoarce pozitia liniei din T2 care contine numele cautat din T1.
+In primul rand, apelam functia find_key care returneaza cele doua pozitii pe care se gaseste cheia data in header-urile celor doua tabele. In functie de asta, stim la 
+ce pozitie din row-uri sa ne uitam. Mai departe, se apeleaza functia add_by_key care primeste ca parametri aceasta pereche de indexi si cele 2 tabele. Presupunem, 
+pentru simplitatea explicatiei, ca indexul pe care se afla cheia in cele 2 tabele este 0 si ca se cheama "Nume". Asadar, pentru fiecare nume din T1, care se afla si 
+in T2, facem append intre row-ul din primul tabel si tail-ul row-ului din al doilea table. Se apeleaza recursiv pana s-a parcurs tot tabelul T1. Mai folosim functia 
+exists, care verifica daca numele dat se afla pe oricare row din T2 la indexul dat de cheie, si functia get_index care intoarce pozitia liniei din T2 care contine 
+numele cautat din T1.
 
 2.5
-Se apeleaza functia x care primeste ca parametri functia data si cele 2 tabele fara headere. Functia x apeleaza functia y:
-pentru fiecare linie din primul tabel, apelam functia y care ia linia data din primul tabel si fiecare linie din al 
-doilea tabel. Apelam functia data pe aceste combinari de linii si rezultatul in adaugam in tabelul final. La sfarsitul
-executiei functiei x, se adaugam lista de nume de coloane noi primita de asemenea ca parametru.
+Se apeleaza functia x care primeste ca parametri functia data si cele 2 tabele fara headere. Functia x apeleaza functia y: pentru fiecare linie din primul tabel, 
+apelam functia y care ia linia data din primul tabel si fiecare linie din al doilea tabel. Apelam functia data pe aceste combinari de linii si rezultatul in adaugam 
+in tabelul final. La sfarsitul executiei functiei x, se adaugam lista de nume de coloane noi primita de asemenea ca parametru.
 
 2.6
-Mai intai vrem sa obtinem un vector de indexi ai coloanelor ce se afla in lista data. Adica, apelam functia get_indexes care
-primeste ca parametru lista de coloane data, header-ul tabelului si tabelul in sine. Pentru fiecare coloana din tabel care
-se regaseste in lista data ca parametru, ii inseram indexul in vectorul final. Apoi, se apeleaza functia a cu acest vector
-de pozitii si pentru fiecare row se apeleaza functia b care paracurge tot vectorul de indexi si adauga pe linie doar
-elementele aferente valorilor din vector.   
+Mai intai vrem sa obtinem un vector de indecsi ai coloanelor ce se afla in lista data. Apelam functia get_indexes care primeste ca parametru lista de coloane data, 
+header-ul tabelului si tabelul in sine. Pentru fiecare coloana din tabel care se regaseste in lista data ca parametru, ii inseram indexul in vectorul final. Apoi, se 
+apeleaza functia a cu acest vector de pozitii si pentru fiecare row se apeleaza functia b care parcurge tot vectorul de indecsi si adauga pe linie doar elementele 
+aferente valorilor din vector.   
 
 2.7
-In primul rand, obtinem indexul lui column in header-ul tabelului pentru a sti ce valoare de pe fiecare rand sa evaluam.
-Apoi, apelam functia through_rows care trece prin toate liniile tabelului si daca valoarea de pe indexul obtinut data ca 
-parametru functiei condition intoarce o valoare de True, atunci adaugam linia respectiva la tabelul final. Parcurgem
-pana cand ajungem la finalul liniilor din tabelul dat.
+In primul rand, obtinem indexul lui column in header-ul tabelului pentru a sti ce valoare de pe fiecare rand sa evaluam. Apoi, apelam functia through_rows care trece 
+prin toate liniile tabelului si daca valoarea de pe indexul obtinut dat ca parametru functiei condition intoarce o valoare de True, atunci adaugam linia respectiva la 
+tabelul final. Parcurgem pana cand ajungem la finalul liniilor din tabelul dat.
